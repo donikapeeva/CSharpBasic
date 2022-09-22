@@ -1,0 +1,40 @@
+﻿using System;
+
+namespace P02_Shopping
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double peterBudget = double.Parse(Console.ReadLine());
+            int videoCardsCount = int.Parse(Console.ReadLine());
+            int processorsCount = int.Parse(Console.ReadLine());
+            int ramCount = int.Parse(Console.ReadLine());
+
+            double totalPriceForVideoCards = videoCardsCount * 250;
+            double totalPriceForProcessors = processorsCount * (totalPriceForVideoCards * 0.35);
+            double totalPriceForRam = ramCount * (totalPriceForVideoCards * 0.1);
+
+            double totalPrice = totalPriceForVideoCards + totalPriceForProcessors + totalPriceForRam;
+            double discount = 0;
+
+            if (videoCardsCount > processorsCount)
+            {
+                discount = totalPrice * 0.15;
+                totalPrice -= discount;
+            }
+
+            double moneyLeft = peterBudget - totalPrice;
+
+            if (totalPrice <= peterBudget)
+            {
+                Console.WriteLine($"You have {moneyLeft:F2} leva left!");
+            }
+            else
+            {
+                moneyLeft = totalPrice - peterBudget;
+                Console.WriteLine($"Not enough money! You need {moneyLeft:F2} leva more!");
+            }
+        }
+    }
+}

@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+public class P05_PCGameShop {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        int n = Integer.parseInt(scan.nextLine());
+
+        int hearhstoneCnt = 0;
+        int forniteCnt = 0;
+        int overwatchCnt = 0;
+        int otherGamesCnt = 0;
+
+        for (int i = 0; i < n; i++) {
+            String game = scan.nextLine();
+            switch (game) {
+                case "Hearthstone":
+                    hearhstoneCnt++;
+                    break;
+                case "Fornite":
+                    forniteCnt++;
+                    break;
+                case "Overwatch":
+                    overwatchCnt++;
+                    break;
+                default:
+                    otherGamesCnt++;
+                    break;
+            }
+        }
+
+        System.out.println(String.format("Hearthstone - %.2f%%", hearhstoneCnt * 1.0 / n * 100));
+        System.out.println(String.format("Fornite - %.2f%%", forniteCnt * 1.0 / n * 100));
+        System.out.println(String.format("Overwatch - %.2f%%", overwatchCnt * 1.0 / n * 100));
+        System.out.println(String.format("Others - %.2f%%", otherGamesCnt * 1.0 / n * 100));
+    }
+}

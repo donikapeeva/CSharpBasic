@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class P06_NameGame {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        String name = scan.nextLine();
+        int bestPoints = 0;
+        String winner = "";
+
+        while (!"Stop".equals(name)) {
+            int currentPoints = 0;
+            for (int i = 0; i < name.length(); i++) {
+                int number = Integer.parseInt(scan.nextLine());
+                if (number == name.charAt(i)) {
+                    currentPoints += 10;
+                } else {
+                    currentPoints += 2;
+                }
+            }
+
+            if (currentPoints >= bestPoints) {
+                bestPoints = currentPoints;
+                winner = name;
+            }
+            name = scan.nextLine();
+        }
+        System.out.println(String.format("The winner is %s with %d points!", winner, bestPoints));
+    }
+}

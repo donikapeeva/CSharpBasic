@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class P02_Shopping {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        double peterBudget = Double.parseDouble(scan.nextLine());
+        int videoCardsCount = Integer.parseInt(scan.nextLine());
+        int processorsCount = Integer.parseInt(scan.nextLine());
+        int ramCount = Integer.parseInt(scan.nextLine());
+
+        double totalPriceForVideoCards = videoCardsCount * 250;
+        double totalPriceForProcessors = processorsCount * (totalPriceForVideoCards * 0.35);
+        double totalPriceForRam = ramCount * (totalPriceForVideoCards * 0.1);
+
+        double totalPrice = totalPriceForVideoCards + totalPriceForProcessors + totalPriceForRam;
+        double discount = 0;
+
+        if (videoCardsCount > processorsCount) {
+            discount = totalPrice * 0.15;
+            totalPrice -= discount;
+        }
+
+        double moneyLeft = peterBudget - totalPrice;
+
+        if (totalPrice <= peterBudget) {
+            System.out.println(String.format("You have %.2f leva left!", moneyLeft));
+        } else {
+            moneyLeft = totalPrice - peterBudget;
+            System.out.println(String.format("Not enough money! You need %.2f leva more!", moneyLeft));
+        }
+    }
+}

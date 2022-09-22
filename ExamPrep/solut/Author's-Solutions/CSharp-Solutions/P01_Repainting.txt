@@ -1,0 +1,26 @@
+﻿using System;
+
+namespace P01_Repainting
+{
+    class P01_Repainting
+    {
+        static void Main(string[] args)
+        {
+            int nylonSize = int.Parse(Console.ReadLine());
+            int paintLiters = int.Parse(Console.ReadLine());
+            int diluentLiters = int.Parse(Console.ReadLine());
+            int days = int.Parse(Console.ReadLine());
+
+            double nylonPrice = 1.50;
+            double paintPrice = 14.50;
+            double diluentPrice = 5;
+            double bagsPrice = 0.40;
+
+            double expenses = (nylonSize + 2) * nylonPrice + paintLiters * 1.10 * paintPrice + diluentLiters * diluentPrice + bagsPrice;
+            double workersExpenses = days * (expenses * 0.30);
+            double totalExpenses = workersExpenses + expenses;
+
+            Console.WriteLine($"Total expenses: {totalExpenses:F2} lv.");
+        }
+    }
+}
